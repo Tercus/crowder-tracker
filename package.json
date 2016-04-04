@@ -1,0 +1,14 @@
+{
+  "name": "crowder-tracker",
+  "version": "1.0.0",
+  "description": "The tracker server for crowder",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bittorrent-tracker": "^8.0.1"
+  }
+}
