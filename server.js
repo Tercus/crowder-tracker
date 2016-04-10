@@ -31,7 +31,7 @@ server.on('listening', function () {
 })
 
 // start tracker server listening! Use 0 to listen on a random free port.
-server.listen(8080, 'localhost', (err) => { 
+server.listen(8080, (err) => { 
 	if (err) console.log('Error: ' + err)
 	console.log('Tracker is running')
 })
@@ -40,14 +40,10 @@ server.listen(8080, 'localhost', (err) => {
 
 server.on('start', function (addr) {
   console.log('got start message from ' + addr)
-  console.log('Array of infoHashes: ' + Object.keys(server.torrents))
 })
 
 server.on('complete', function (addr) {})
-server.on('update', function (addr) {
-	console.log('Update from: ' + addr)
-	console.log('Array of infoHashes: ' + Object.keys(server.torrents))
-})
+server.on('update', function (addr) {})
 server.on('stop', function (addr) {})
 
 // get info hashes for all torrents in the tracker server
