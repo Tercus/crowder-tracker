@@ -36,3 +36,17 @@ server.listen(8080, (err) => {
 server.on('start', function (addr) {
   console.log('got start message from ' + addr)
 })
+
+
+var socket = require('socket.io-client')('http://localhost:81')
+socket.on('connect', function(){
+  console.log('New connection to webserver....burp')
+  socket.emit('burp')
+})
+socket.on('what', function(data){
+  console.log(data)
+  console.log('I burped and senpai heard it >_<;;;')
+})
+socket.on('disconnect', function(){
+  console.log('Shoot, lost control to the webserver!')
+})
