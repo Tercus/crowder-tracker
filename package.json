@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bittorrent-tracker": "^8.0.1",
-    "socket.io-client": "^1.4.5"
+    "bittorrent-tracker": "^8.0.1"
   }
 }

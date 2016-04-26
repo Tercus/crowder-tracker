@@ -11,18 +11,12 @@ var server = new Server({
 // Internal websocket servers exposed as public properties.
 server.ws
 
-server.on('error', function (err) {
-  // fatal server error!
-  console.log(err.message)
-})
+// Handle errors (critical) and warnings (probably just buggy client)
+server.on('error', (err) => { console.log(err.message) })
+server.on('warning', (err) => { console.log(err.message) })
 
-server.on('warning', function (err) {
-  // client sent bad data. probably not a problem, just a buggy client.
-  console.log(err.message)
-})
-
+// Fired when all requested servers are listening
 server.on('listening', function () {
-  // fired when all requested servers are listening
   console.log('listening on ws port:' + server.ws.address().port)
 })
 
@@ -35,4 +29,9 @@ server.listen(8080, (err) => {
 // listen for individual tracker messages from peers:
 server.on('start', function (addr) {
   console.log('got start message from ' + addr)
+})
+
+server.on('complete', function (addr) {
+  //This also gets called when a new SEEDER announces to the tracker. Weird
+  console.log('nice, a user finished downloading something: ' + addr)
 })
